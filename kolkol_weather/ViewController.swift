@@ -23,10 +23,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        MyName.text = "Maksym Kolodiy"
+        
         dataManager.weatherDataForLocation(latitude: Defaults.Latitude, longitude: Defaults.Longitude) { (response, error) in
             print("response \(response)")
             if let weatherData = WeatherData(JSON: response) {
                 print("weatherData", weatherData)
+                let windSpeed = String(weatherData.hourData[0].windSpeed)
+                DispatchQueue.main.async {
+                    self.Wind.text = "\(windSpeed) km/h"
+                }
             }
         }
     }

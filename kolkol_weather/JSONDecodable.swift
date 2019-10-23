@@ -9,7 +9,7 @@
 import Foundation
 
 protocol JSONDecodable {
-    
-    init?(JSON: Any)
-    
+
+    init(decoder: JSONDecoder) throws
+
 }
