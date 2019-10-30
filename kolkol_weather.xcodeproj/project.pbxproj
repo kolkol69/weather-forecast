@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05C725762368B96200EC4652 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C725752368B96200EC4652 /* SwiftyJSON.framework */; };
 		3FF30EB923574DE900A12B0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF30EB823574DE900A12B0C /* AppDelegate.swift */; };
 		3FF30EBB23574DE900A12B0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF30EBA23574DE900A12B0C /* ViewController.swift */; };
 		3FF30EBE23574DE900A12B0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF30EBC23574DE900A12B0C /* Main.storyboard */; };
@@ -15,11 +16,12 @@
 		3FF30ECD2357527B00A12B0C /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF30ECC2357527B00A12B0C /* Configuration.swift */; };
 		3FF30ECF235753AB00A12B0C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF30ECE235753AB00A12B0C /* DataManager.swift */; };
 		3FF30ED123575B8E00A12B0C /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF30ED023575B8E00A12B0C /* WeatherData.swift */; };
-		3FF30ED323575C7400A12B0C /* WeatherHourData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF30ED223575C7400A12B0C /* WeatherHourData.swift */; };
 		3FF30ED523575D3A00A12B0C /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF30ED423575D3A00A12B0C /* JSONDecodable.swift */; };
+		563FF301EAF0F3DDADED2D29 /* Pods_kolkol_weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6DA1296882638C11A81D26 /* Pods_kolkol_weather.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05C725752368B96200EC4652 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF30EB523574DE900A12B0C /* kolkol_weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kolkol_weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF30EB823574DE900A12B0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FF30EBA23574DE900A12B0C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,8 +32,10 @@
 		3FF30ECC2357527B00A12B0C /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3FF30ECE235753AB00A12B0C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3FF30ED023575B8E00A12B0C /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
-		3FF30ED223575C7400A12B0C /* WeatherHourData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHourData.swift; sourceTree = "<group>"; };
 		3FF30ED423575D3A00A12B0C /* JSONDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
+		9F6DA1296882638C11A81D26 /* Pods_kolkol_weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kolkol_weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9C73237D0105AB9E42AC39B /* Pods-kolkol_weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kolkol_weather.debug.xcconfig"; path = "Target Support Files/Pods-kolkol_weather/Pods-kolkol_weather.debug.xcconfig"; sourceTree = "<group>"; };
+		CB2653D9BF8E11CBFB4BEE98 /* Pods-kolkol_weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kolkol_weather.release.xcconfig"; path = "Target Support Files/Pods-kolkol_weather/Pods-kolkol_weather.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				563FF301EAF0F3DDADED2D29 /* Pods_kolkol_weather.framework in Frameworks */,
+				05C725762368B96200EC4652 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +56,8 @@
 			children = (
 				3FF30EB723574DE900A12B0C /* kolkol_weather */,
 				3FF30EB623574DE900A12B0C /* Products */,
+				6CDD5478F074A566D8B43EA3 /* Pods */,
+				60CC3F0D7B367B5835EF82C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,7 +75,6 @@
 				3FF30EB823574DE900A12B0C /* AppDelegate.swift */,
 				3FF30EBA23574DE900A12B0C /* ViewController.swift */,
 				3FF30ED023575B8E00A12B0C /* WeatherData.swift */,
-				3FF30ED223575C7400A12B0C /* WeatherHourData.swift */,
 				3FF30ED423575D3A00A12B0C /* JSONDecodable.swift */,
 				3FF30EBC23574DE900A12B0C /* Main.storyboard */,
 				3FF30ECC2357527B00A12B0C /* Configuration.swift */,
@@ -79,6 +86,24 @@
 			path = kolkol_weather;
 			sourceTree = "<group>";
 		};
+		60CC3F0D7B367B5835EF82C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05C725752368B96200EC4652 /* SwiftyJSON.framework */,
+				9F6DA1296882638C11A81D26 /* Pods_kolkol_weather.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6CDD5478F074A566D8B43EA3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B9C73237D0105AB9E42AC39B /* Pods-kolkol_weather.debug.xcconfig */,
+				CB2653D9BF8E11CBFB4BEE98 /* Pods-kolkol_weather.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +111,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FF30EC723574DEB00A12B0C /* Build configuration list for PBXNativeTarget "kolkol_weather" */;
 			buildPhases = (
+				11754DDF19C305E70E4B9A61 /* [CP] Check Pods Manifest.lock */,
 				3FF30EB123574DE900A12B0C /* Sources */,
 				3FF30EB223574DE900A12B0C /* Frameworks */,
 				3FF30EB323574DE900A12B0C /* Resources */,
+				6F29312C36376284DB9F5DDE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -145,12 +172,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11754DDF19C305E70E4B9A61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-kolkol_weather-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F29312C36376284DB9F5DDE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kolkol_weather/Pods-kolkol_weather-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kolkol_weather/Pods-kolkol_weather-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kolkol_weather/Pods-kolkol_weather-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3FF30EB123574DE900A12B0C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FF30ED323575C7400A12B0C /* WeatherHourData.swift in Sources */,
 				3FF30ECD2357527B00A12B0C /* Configuration.swift in Sources */,
 				3FF30ED523575D3A00A12B0C /* JSONDecodable.swift in Sources */,
 				3FF30ED123575B8E00A12B0C /* WeatherData.swift in Sources */,
@@ -300,6 +368,7 @@
 		};
 		3FF30EC823574DEB00A12B0C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9C73237D0105AB9E42AC39B /* Pods-kolkol_weather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -320,6 +389,7 @@
 		};
 		3FF30EC923574DEB00A12B0C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB2653D9BF8E11CBFB4BEE98 /* Pods-kolkol_weather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

@@ -1,0 +1,6 @@
+framework module Pods_kolkol_weather {
+  umbrella header "Pods-kolkol_weather-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,42 +7,77 @@
 //
 
 import Foundation
+import SwiftyJSON
 
-public struct WeatherData {
+struct WeatherData {
     
-    public let lat: Double
-    public let long: Double
+    var maxTemp: String
+    var minTemp: String
+    var description: String
+    var icon: String
+    var precipType: String
+    var pressure: String
+    var wind: String
+    var data: JSON
     
-    public let hourData: [WeatherHourData]
-    
-    public init(lat: Double, long: Double, hourData: [WeatherHourData]) {
-        self.lat = lat
-        self.long = long
-        self.hourData = hourData
-    }
-    
-}
-extension WeatherData: JSONDecodable {
-    
-    public init?(JSON: Any) {
-        guard let JSON = JSON as? [String: AnyObject] else { return nil }
-        
-        guard let lat = JSON["latitude"] as? Double else { return nil }
-        guard let long = JSON["longitude"] as? Double else { return nil }
-        guard let hourlyData = JSON["hourly"]?["data"] as? [[String: AnyObject]] else { return nil }
-        
-        self.lat = lat
-        self.long = long
-        
-        var buffer = [WeatherHourData]()
-        
-        for hourlyDataPoint in hourlyData {
-            if let weatherHourData = WeatherHourData(JSON: hourlyDataPoint) {
-                buffer.append(weatherHourData)
+    init(data: Any, dayNumber: Int) {
+        let json = JSON(data)
+        let dailyWeather = json["daily"]
+
+        if let dailyWeatherData = dailyWeather["data"].array {
+            self.data = dailyWeatherData[dayNumber]
+            print(self.data)
+            if let summary = self.data["summary"].string {
+                self.description = summary
+            } else {
+                self.description = "--"
             }
+            
+            if let icon = self.data["icon"].string {
+                self.icon = icon
+            } else {
+                self.icon = "--"
+            }
+            
+            if let maxTemp = self.data["temperatureMax"].float {
+                self.maxTemp = String(format: "%.0f", maxTemp) + " ºF"
+            } else {
+                self.maxTemp = "--"
+            }
+            
+            if let minTemp = self.data["temperatureMin"].float {
+                self.minTemp = String(format: "%.0f", minTemp) + " ºF"
+            } else {
+                self.minTemp = "--"
+            }
+            
+            if let precipType = self.data["precipType"].string {
+                self.precipType = precipType
+            } else {
+                self.precipType = "--"
+            }
+            
+            if let pressure = self.data["pressure"].float {
+                self.pressure = String(format: "%.0f", pressure) + " hPa"
+            } else {
+                self.pressure = "--"
+            }
+            
+            if let wind = self.data["windSpeed"].float {
+                self.wind = String(format: "%.0f", wind) + " m/s"
+            } else {
+                self.wind = "--"
+            }
+        } else {
+            self.data = []
+            self.description = "--"
+            self.icon = "--"
+            self.maxTemp = "--"
+            self.minTemp = "--"
+            self.precipType = "--"
+            self.pressure = "--"
+            self.wind = "--"
         }
         
-        self.hourData = buffer
     }
-    
 }
