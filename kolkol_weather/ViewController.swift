@@ -19,6 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var Pressure: UILabel!
     @IBOutlet weak var MaxTemp: UILabel!
     @IBOutlet weak var MinTemp: UILabel!
+    @IBOutlet weak var TestSplitViewLabel: UILabel!
+    @IBOutlet weak var PrevDayButton: UIButton!
+    @IBOutlet weak var NextDayButton: UIButton!
     
     func getDayNumber() -> Int{
         return self.dayNumber;
@@ -30,10 +33,13 @@ class ViewController: UIViewController {
     
     func nextDay(){
         let dayNumber = getDayNumber();
-        if self.dayNumber < 2 {
+        if self.dayNumber < 6 {
             setDayNumber(dayNumber: dayNumber + 1)
             fetchData()
+        } else {
+            self.disableButton(button: self.NextDayButton)
         }
+        self.enableButton(button: self.PrevDayButton)
     }
     
     func prevDay(){
@@ -42,6 +48,20 @@ class ViewController: UIViewController {
             setDayNumber(dayNumber: dayNumber - 1)
             fetchData()
         }
+        else {
+            self.disableButton(button: self.PrevDayButton)
+        }
+        self.enableButton(button: self.NextDayButton)
+    }
+    
+    func disableButton(button: UIButton){
+        button.isEnabled = false
+        button.alpha = 0.5
+    }
+    
+    func enableButton(button: UIButton){
+        button.isEnabled = true
+        button.alpha = 1.0
     }
     
     @IBAction func NextDay(_ sender: UIButton) {
@@ -79,7 +99,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MyName.text = "Maksym Kolodiy"
+        self.disableButton(button: self.PrevDayButton)
         fetchData()
-        
     }
 }

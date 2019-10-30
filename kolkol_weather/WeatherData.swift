@@ -40,19 +40,19 @@ struct WeatherData {
             }
             
             if let maxTemp = self.data["temperatureMax"].float {
-                self.maxTemp = String(format: "%.0f", maxTemp) + " ºF"
+                self.maxTemp = String(format: "%.0f", (maxTemp - 32) * 5 / 9) + " ºC"
             } else {
                 self.maxTemp = "--"
             }
             
             if let minTemp = self.data["temperatureMin"].float {
-                self.minTemp = String(format: "%.0f", minTemp) + " ºF"
+                self.minTemp = String(format: "%.0f", (minTemp - 32) * 5 / 9) + " ºC"
             } else {
                 self.minTemp = "--"
             }
             
-            if let precipType = self.data["precipType"].string {
-                self.precipType = precipType
+            if let precipType = self.data["precipProbability"].float {
+                self.precipType = "\(precipType * 100) %"
             } else {
                 self.precipType = "--"
             }
