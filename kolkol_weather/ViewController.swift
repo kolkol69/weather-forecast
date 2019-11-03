@@ -9,6 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var CityLbl: String = ""
+    var CityLon: Double = 0.0
+    var CityLat: Double = 0.0
+    
     private var dayNumber = 0;
     
     @IBOutlet weak var weatherIcon: UIImageView!
@@ -19,7 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var Pressure: UILabel!
     @IBOutlet weak var MaxTemp: UILabel!
     @IBOutlet weak var MinTemp: UILabel!
-    @IBOutlet weak var TestSplitViewLabel: UILabel!
+    @IBOutlet weak var City: UILabel!
     @IBOutlet weak var PrevDayButton: UIButton!
     @IBOutlet weak var NextDayButton: UIButton!
     
@@ -77,7 +81,19 @@ class ViewController: UIViewController {
     private let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
     
     func fetchData() {
-        dataManager.weatherDataForLocation(latitude: Defaults.Latitude, longitude: Defaults.Longitude) { (response, error) in
+        var lat: Double
+        var lon: Double
+        if self.CityLat == 0.0 {
+            lat = Defaults.Latitude
+        } else {
+            lat = self.CityLat
+        }
+        if self.CityLon == 0.0 {
+            lon = Defaults.Longitude
+        } else {
+            lon = self.CityLon
+        } // TODO SEND LOCATION TO VIEW CONTROLLER
+        dataManager.weatherDataForLocation(latitude: lat, longitude: lon) { (response, error) in
 
             var weatherData: WeatherData
             weatherData = WeatherData(data: response, dayNumber: self.getDayNumber())
@@ -99,6 +115,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MyName.text = "Maksym Kolodiy"
+        City.text = self.CityLbl
         self.disableButton(button: self.PrevDayButton)
         fetchData()
     }

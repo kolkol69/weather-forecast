@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RRH-7c-TZb">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -157,6 +157,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="City" destination="HA9-iv-jhS" id="eEm-wd-Weq"/>
                         <outlet property="Condition" destination="AcW-IL-GXC" id="pfF-G1-4CN"/>
                         <outlet property="MaxTemp" destination="6CZ-Xk-KUr" id="K6m-3U-ygH"/>
                         <outlet property="MinTemp" destination="4F5-XO-BKh" id="AyA-vG-Ph6"/>
@@ -164,7 +165,6 @@
                         <outlet property="NextDayButton" destination="iBk-sc-kX2" id="Nng-l9-6QX"/>
                         <outlet property="Pressure" destination="zbv-67-lVI" id="NXV-w5-pbd"/>
                         <outlet property="PrevDayButton" destination="nYO-J7-grh" id="iOk-nC-MV4"/>
-                        <outlet property="TestSplitViewLabel" destination="HA9-iv-jhS" id="rp2-6d-nSF"/>
                         <outlet property="WeatherType" destination="b3U-Wt-6al" id="tOH-rf-gsT"/>
                         <outlet property="Wind" destination="QNx-Dj-8vm" id="LGh-ie-stP"/>
                         <outlet property="weatherIcon" destination="VNa-p4-boL" id="vD9-fl-w62"/>
@@ -220,13 +220,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQn-If-pDA">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQn-If-pDA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="GhB-sv-tca"/>
-                                                <constraint firstAttribute="height" constant="100" id="hVZ-uS-ATD"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
