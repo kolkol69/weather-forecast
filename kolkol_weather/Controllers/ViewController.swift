@@ -23,9 +23,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var Pressure: UILabel!
     @IBOutlet weak var MaxTemp: UILabel!
     @IBOutlet weak var MinTemp: UILabel!
-    @IBOutlet weak var City: UILabel!
     @IBOutlet weak var PrevDayButton: UIButton!
     @IBOutlet weak var NextDayButton: UIButton!
+    @IBAction func btnShowOnMap(_ sender: Any) {
+//        let vc = MapController()
+//        vc.latt = self.CityLat
+//        vc.long = self.CityLon
+//
+//        navigationController?.pushViewController(vc, animated: true)
+    }
     
     func getDayNumber() -> Int{
         return self.dayNumber;
@@ -83,11 +89,13 @@ class ViewController: UIViewController {
         var lon: Double
         if self.CityLat == 0.0 {
             lat = Defaults.Latitude
+            self.CityLat = Defaults.Latitude
         } else {
             lat = self.CityLat
         }
         if self.CityLon == 0.0 {
             lon = Defaults.Longitude
+            self.CityLon = Defaults.Longitude
         } else {
             lon = self.CityLon
         }
@@ -127,6 +135,16 @@ class ViewController: UIViewController {
             navController.navigationBar.isTranslucent = true
             navController.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             navController.navigationBar.alpha = 0.8
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is MapController
+        {
+            let vc = segue.destination as? MapController
+            vc?.latt = self.CityLat
+            vc?.long = self.CityLon
         }
     }
 }

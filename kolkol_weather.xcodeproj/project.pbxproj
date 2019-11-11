@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0594AB8B2376E610009D5D20 /* ModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0594AB8A2376E610009D5D20 /* ModalController.swift */; };
 		0594AB8E2379B2EA009D5D20 /* kolkol_weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0594AB8C2379B2EA009D5D20 /* kolkol_weather.xcdatamodeld */; };
+		0594ABB9237A0306009D5D20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0594ABB8237A0305009D5D20 /* Assets.xcassets */; };
+		0594ABBB237A1664009D5D20 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0594ABBA237A1664009D5D20 /* MapController.swift */; };
 		05C725762368B96200EC4652 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C725752368B96200EC4652 /* SwiftyJSON.framework */; };
 		05C7257A2369D48200EC4652 /* CityListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C725792369D48200EC4652 /* CityListController.swift */; };
 		05C7257E2369DD4C00EC4652 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C7257D2369DD4C00EC4652 /* TableViewCell.swift */; };
@@ -16,7 +18,6 @@
 		3FF30EB923574DE900A12B0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF30EB823574DE900A12B0C /* AppDelegate.swift */; };
 		3FF30EBB23574DE900A12B0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF30EBA23574DE900A12B0C /* ViewController.swift */; };
 		3FF30EBE23574DE900A12B0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF30EBC23574DE900A12B0C /* Main.storyboard */; };
-		3FF30EC023574DEB00A12B0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF30EBF23574DEB00A12B0C /* Assets.xcassets */; };
 		3FF30EC323574DEB00A12B0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF30EC123574DEB00A12B0C /* LaunchScreen.storyboard */; };
 		3FF30ECD2357527B00A12B0C /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF30ECC2357527B00A12B0C /* Configuration.swift */; };
 		3FF30ECF235753AB00A12B0C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF30ECE235753AB00A12B0C /* DataManager.swift */; };
@@ -28,6 +29,8 @@
 /* Begin PBXFileReference section */
 		0594AB8A2376E610009D5D20 /* ModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModalController.swift; path = "/Users/maksymkolodiy/Documents/agh/mobile-lab3/weather-forecast/kolkol_weather/ModalController.swift"; sourceTree = "<absolute>"; };
 		0594AB8D2379B2EA009D5D20 /* CityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CityModel.xcdatamodel; sourceTree = "<group>"; };
+		0594ABB8237A0305009D5D20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		0594ABBA237A1664009D5D20 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		05C725752368B96200EC4652 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C725792369D48200EC4652 /* CityListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListController.swift; sourceTree = "<group>"; };
 		05C7257D2369DD4C00EC4652 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -36,7 +39,6 @@
 		3FF30EB823574DE900A12B0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FF30EBA23574DE900A12B0C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3FF30EBD23574DE900A12B0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3FF30EBF23574DEB00A12B0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FF30EC223574DEB00A12B0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FF30EC423574DEB00A12B0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FF30ECC2357527B00A12B0C /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				05C7257F2369DD7900EC4652 /* TableViewController.swift */,
 				3FF30EBA23574DE900A12B0C /* ViewController.swift */,
 				0594AB8A2376E610009D5D20 /* ModalController.swift */,
+				0594ABBA237A1664009D5D20 /* MapController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -111,6 +114,7 @@
 		3FF30EB723574DE900A12B0C /* kolkol_weather */ = {
 			isa = PBXGroup;
 			children = (
+				0594ABB8237A0305009D5D20 /* Assets.xcassets */,
 				0594ABB72379B94E009D5D20 /* Helpers */,
 				0594ABB62379B93D009D5D20 /* CoreData */,
 				0594AB8F2379B307009D5D20 /* Controllers */,
@@ -118,7 +122,6 @@
 				3FF30ED023575B8E00A12B0C /* WeatherData.swift */,
 				05C7257D2369DD4C00EC4652 /* TableViewCell.swift */,
 				3FF30EBC23574DE900A12B0C /* Main.storyboard */,
-				3FF30EBF23574DEB00A12B0C /* Assets.xcassets */,
 				3FF30EC123574DEB00A12B0C /* LaunchScreen.storyboard */,
 				3FF30EC423574DEB00A12B0C /* Info.plist */,
 			);
@@ -204,7 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FF30EC323574DEB00A12B0C /* LaunchScreen.storyboard in Resources */,
-				3FF30EC023574DEB00A12B0C /* Assets.xcassets in Resources */,
+				0594ABB9237A0306009D5D20 /* Assets.xcassets in Resources */,
 				3FF30EBE23574DE900A12B0C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +265,7 @@
 				3FF30ECD2357527B00A12B0C /* Configuration.swift in Sources */,
 				05C7257E2369DD4C00EC4652 /* TableViewCell.swift in Sources */,
 				3FF30ED523575D3A00A12B0C /* JSONDecodable.swift in Sources */,
+				0594ABBB237A1664009D5D20 /* MapController.swift in Sources */,
 				3FF30ED123575B8E00A12B0C /* WeatherData.swift in Sources */,
 				3FF30ECF235753AB00A12B0C /* DataManager.swift in Sources */,
 				05C7257A2369D48200EC4652 /* CityListController.swift in Sources */,
@@ -417,13 +421,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 57YCY3ANNG;
 				INFOPLIST_FILE = kolkol_weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mkolodiy.kolkol-weather";
+				PRODUCT_BUNDLE_IDENTIFIER = "mkolodiy.kolkol-weather-kol";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -438,13 +442,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 57YCY3ANNG;
 				INFOPLIST_FILE = kolkol_weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mkolodiy.kolkol-weather";
+				PRODUCT_BUNDLE_IDENTIFIER = "mkolodiy.kolkol-weather-kol";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

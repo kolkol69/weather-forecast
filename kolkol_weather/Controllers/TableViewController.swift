@@ -75,10 +75,6 @@ class TableViewController: UITableViewController {
             for data in result as! [NSManagedObject] {
                 let name = data.value(forKey: "name") as! String
                 let location = data.value(forKey: "location") as! String
-//                print("Location: ")
-//                print(name)
-//                print(location)
-                
                 cityDict["\(name)"] = "\(location)"
           }
         } catch {
@@ -197,8 +193,9 @@ class TableViewController: UITableViewController {
     }
     
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
+        print("seque", segue)
         let source = segue.source as? ModalController // This is the source
-        if source?.searchCity != "" {
+        if source?.searchCity != "" && source?.searchCoords != "" {
             let cityName = source?.searchCity
             let cityCoords = source?.searchCoords
             self.cityDict["\(cityName!)"] = cityCoords
@@ -206,4 +203,5 @@ class TableViewController: UITableViewController {
             self.updateCoreData()
         }
     }
+    
 }
