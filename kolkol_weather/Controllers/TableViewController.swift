@@ -9,17 +9,80 @@
 import UIKit
 import CoreData
 
+
 class TableViewController: UITableViewController {
     private let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
-//    var cities: [NSManagedObject] = []
+    var managedObjectContext: NSManagedObjectContext!
     var cityDict: [String: String] = ["Lisbon" : "38.736946,-9.142685", "Warsaw": "52.237049,21.017532", "Kyiv": "50.450001,30.523333"]
+    
     @IBAction func AddCityBtn(_ sender: Any) {
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
+        self.getCitiesFromCoreData()
+    }
+    
+    func deleteAllCoreData(entity: String){
+
+        let appDel:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        let context:NSManagedObjectContext = appDel.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
+            fetchRequest.returnsObjectsAsFaults = false
+        do
+        {
+            let results = try context.fetch(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                context.delete(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Deleted all my data in City error : \(error) \(error.userInfo)")
+        }
+    }
+    
+    func addCitiesToCoreData(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "City", in: context)
+
+        for (key, value) in cityDict {
+           let newCity = NSManagedObject(entity: entity!, insertInto: context)
+           newCity.setValue(key, forKey: "name")
+           newCity.setValue(value, forKey: "location")
+        }
+
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+               
+    }
+    
+    func getCitiesFromCoreData(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
+        let context = appDelegate.persistentContainer.viewContext
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                let name = data.value(forKey: "name") as! String
+                let location = data.value(forKey: "location") as! String
+                print("Location: ")
+                print(name)
+                print(location)
+                
+                cityDict["\(name)"] = "\(location)"
+          }
+        } catch {
+            print("Failed")
+        }
         
+        self.tableView.reloadData()
     }
     
     
@@ -81,11 +144,10 @@ class TableViewController: UITableViewController {
             let cityCoords = source?.searchCoords
             self.cityDict["\(cityName!)"] = cityCoords
             print(self.cityDict)
-            tableView.reloadData()
             
-            let defaults = UserDefaults.standard
-            // Store
-            defaults.set("theGreatestName", forKey: "cities")
+            self.deleteAllCoreData(entity: "City")
+            self.addCitiesToCoreData()
+            tableView.reloadData()
         }
     }
 }
