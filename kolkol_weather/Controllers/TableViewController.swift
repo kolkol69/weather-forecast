@@ -12,8 +12,10 @@ import CoreData
 
 class TableViewController: UITableViewController {
     private let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
-    var managedObjectContext: NSManagedObjectContext!
+    
     var cityDict: [String: String] = ["Lisbon" : "38.736946,-9.142685", "Warsaw": "52.237049,21.017532", "Kyiv": "50.450001,30.523333"]
+    var deleteCityName: String? = ""
+    var deleteRowIndexPaths: IndexPath? = nil
     
     @IBAction func AddCityBtn(_ sender: Any) {
     }
@@ -137,6 +139,62 @@ class TableViewController: UITableViewController {
         splitViewController?.showDetailViewController(vc, sender: nil)
     }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        print("del")
+        if (editingStyle == .delete) {
+            print("deleting")
+            let cityArray = Array(cityDict)
+            let cityToDelete = cityArray[indexPath.row]
+            self.deleteRowIndexPaths = indexPath
+            self.deleteCityName = cityToDelete.key
+            self.confirmDelete(name: cityToDelete.key)
+            }
+        }
+    
+    func confirmDelete(name: String) {
+        let alert = UIAlertController(title: "Delete City", message: "Are you sure you want to permanently delete \(name)?", preferredStyle: .actionSheet)
+
+        let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: self.handleDeleteCity)
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: self.cancelDeleteCity)
+
+        alert.addAction(DeleteAction)
+        alert.addAction(CancelAction)
+
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func handleDeleteCity(alertAction: UIAlertAction!) -> Void {
+        if let deleteCity = deleteCityName {
+            tableView.beginUpdates()
+            
+            cityDict.removeValue(forKey: deleteCity)
+
+            // Note that indexPath is wrapped in an array:  [indexPath]
+            if let indexPath = deleteRowIndexPaths {
+                tableView.deleteRows(at: [(indexPath as IndexPath)], with: .automatic)
+            }
+
+            self.deleteCityName = ""
+
+            tableView.endUpdates()
+            self.updateCoreData()
+        }
+    }
+
+    func cancelDeleteCity(alertAction: UIAlertAction!) {
+        self.deleteCityName = ""
+    }
+    
+    func updateCoreData(){
+        self.deleteAllCoreData(entity: "City")
+        self.addCitiesToCoreData()
+        self.tableView.reloadData()
+    }
+    
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
         let source = segue.source as? ModalController // This is the source
         if source?.searchCity != "" {
@@ -144,10 +202,7 @@ class TableViewController: UITableViewController {
             let cityCoords = source?.searchCoords
             self.cityDict["\(cityName!)"] = cityCoords
             print(self.cityDict)
-            
-            self.deleteAllCoreData(entity: "City")
-            self.addCitiesToCoreData()
-            tableView.reloadData()
+            self.updateCoreData()
         }
     }
 }
