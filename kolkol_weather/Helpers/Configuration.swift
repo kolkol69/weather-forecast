@@ -20,5 +20,6 @@ struct API {
 struct Defaults {
     static let Latitude: Double = 50.064651
     static let Longitude: Double = 19.944981
+    static let City: String = "Warsaw"
 }
 

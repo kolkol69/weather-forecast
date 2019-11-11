@@ -111,9 +111,22 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.CityLbl == "" {
+            self.navigationItem.title = Defaults.City
+        } else {
+            self.navigationItem.title = self.CityLbl
+        }
+        self.styleHeader()
         MyName.text = "Maksym Kolodiy"
-        City.text = self.CityLbl
         self.disableButton(button: self.PrevDayButton)
         fetchData()
+    }
+    
+    func styleHeader(){
+        if let navController = self.navigationController {
+            navController.navigationBar.isTranslucent = true
+            navController.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            navController.navigationBar.alpha = 0.8
+        }
     }
 }

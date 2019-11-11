@@ -69,7 +69,7 @@ struct WeatherData {
             }
             
             if let precipType = self.data["precipProbability"].float {
-                self.precipType = "\(precipType * 100) %"
+                self.precipType = String(format: "%.0f", precipType * 100) + " %"
             } else {
                 self.precipType = "--"
             }

@@ -24,6 +24,7 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
         self.getCitiesFromCoreData()
+        
     }
     
     func deleteAllCoreData(entity: String){
@@ -74,9 +75,9 @@ class TableViewController: UITableViewController {
             for data in result as! [NSManagedObject] {
                 let name = data.value(forKey: "name") as! String
                 let location = data.value(forKey: "location") as! String
-                print("Location: ")
-                print(name)
-                print(location)
+//                print("Location: ")
+//                print(name)
+//                print(location)
                 
                 cityDict["\(name)"] = "\(location)"
           }
@@ -93,7 +94,7 @@ class TableViewController: UITableViewController {
             var weatherData: WeatherData
             
             weatherData = WeatherData(data: response, dayNumber: 0)
-            print(weatherData.currentlyIcon)
+            //print(weatherData.currentlyIcon)
             
                 DispatchQueue.main.async {
                     cell.lblTemp.text = weatherData.currentlyTemp
@@ -144,9 +145,9 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print("del")
+        //print("del")
         if (editingStyle == .delete) {
-            print("deleting")
+            //print("deleting")
             let cityArray = Array(cityDict)
             let cityToDelete = cityArray[indexPath.row]
             self.deleteRowIndexPaths = indexPath
@@ -201,7 +202,7 @@ class TableViewController: UITableViewController {
             let cityName = source?.searchCity
             let cityCoords = source?.searchCoords
             self.cityDict["\(cityName!)"] = cityCoords
-            print(self.cityDict)
+            //print(self.cityDict)
             self.updateCoreData()
         }
     }

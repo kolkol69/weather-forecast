@@ -23,11 +23,11 @@ class ModalController: UIViewController {
         AF.request(url, method: .get).responseJSON { response in
             if let result = response.value{
                 if let cityArray = result as? [[String : Any]] {
-                    print(cityArray, cityArray.count)
+                    //print(cityArray, cityArray.count)
                     if cityArray.count > 0 {
                         self.getCityData(cityArray: cityArray)
                     } else {
-                        print("No such city, try another one pls")
+                        //print("No such city, try another one pls")
                         self.showAlert()
                     }
                 }
@@ -44,8 +44,8 @@ class ModalController: UIViewController {
                 self.searchCity = city
             }
             
-            print(self.searchCity)
-            print(self.searchCoords)
+//            print(self.searchCity)
+//            print(self.searchCoords)
             self.btnCancel.sendActions(for: .touchUpInside)
             //self.dismiss(animated: true, completion: nil)
         }
@@ -62,19 +62,17 @@ class ModalController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         txtSearchField.addTarget(self, action: #selector(ModalController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
-
         // Do any additional setup after loading the view.
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
 //        print("hit: ", textField.text)
         if let searchField = textField.text {
-            print(searchField)
+//            print(searchField)
             self.searchField = searchField
         }
 
     }
-    
 
     /*
     // MARK: - Navigation
