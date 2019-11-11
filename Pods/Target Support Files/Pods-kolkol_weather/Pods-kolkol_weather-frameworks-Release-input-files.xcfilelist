@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-kolkol_weather/Pods-kolkol_weather-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework

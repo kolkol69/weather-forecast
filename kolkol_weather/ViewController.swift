@@ -70,12 +70,10 @@ class ViewController: UIViewController {
     
     @IBAction func NextDay(_ sender: UIButton) {
         self.nextDay()
-        print("day: ", getDayNumber())
     }
     
     @IBAction func PrevDay(_ sender: UIButton) {
         self.prevDay()
-        print("day: ", getDayNumber())
     }
     
     private let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
@@ -92,12 +90,11 @@ class ViewController: UIViewController {
             lon = Defaults.Longitude
         } else {
             lon = self.CityLon
-        } // TODO SEND LOCATION TO VIEW CONTROLLER
+        }
         dataManager.weatherDataForLocation(latitude: lat, longitude: lon) { (response, error) in
 
             var weatherData: WeatherData
             weatherData = WeatherData(data: response, dayNumber: self.getDayNumber())
-            print("weatherData", weatherData.data)
 
                 DispatchQueue.main.async {
                     self.Wind.text = "\(weatherData.wind)"

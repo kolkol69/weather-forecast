@@ -10,7 +10,10 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblText: UILabel!
+    @IBOutlet weak var lblCity: UILabel!
+    @IBOutlet weak var lblTemp: UILabel!
+    @IBOutlet weak var imgWeatherIcon: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

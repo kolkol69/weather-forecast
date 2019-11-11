@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0594AB8B2376E610009D5D20 /* ModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0594AB8A2376E610009D5D20 /* ModalController.swift */; };
 		05C725762368B96200EC4652 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C725752368B96200EC4652 /* SwiftyJSON.framework */; };
 		05C7257A2369D48200EC4652 /* CityListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C725792369D48200EC4652 /* CityListController.swift */; };
 		05C7257E2369DD4C00EC4652 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C7257D2369DD4C00EC4652 /* TableViewCell.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0594AB8A2376E610009D5D20 /* ModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModalController.swift; path = "/Users/maksymkolodiy/Documents/agh/mobile-lab3/weather-forecast/kolkol_weather/ModalController.swift"; sourceTree = "<absolute>"; };
 		05C725752368B96200EC4652 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C725792369D48200EC4652 /* CityListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListController.swift; sourceTree = "<group>"; };
 		05C7257D2369DD4C00EC4652 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		3FF30EB723574DE900A12B0C /* kolkol_weather */ = {
 			isa = PBXGroup;
 			children = (
+				0594AB8A2376E610009D5D20 /* ModalController.swift */,
 				3FF30EB823574DE900A12B0C /* AppDelegate.swift */,
 				3FF30EBA23574DE900A12B0C /* ViewController.swift */,
 				3FF30ED023575B8E00A12B0C /* WeatherData.swift */,
@@ -235,6 +238,7 @@
 				3FF30ECF235753AB00A12B0C /* DataManager.swift in Sources */,
 				05C7257A2369D48200EC4652 /* CityListController.swift in Sources */,
 				3FF30EBB23574DE900A12B0C /* ViewController.swift in Sources */,
+				0594AB8B2376E610009D5D20 /* ModalController.swift in Sources */,
 				05C725802369DD7900EC4652 /* TableViewController.swift in Sources */,
 				3FF30EB923574DE900A12B0C /* AppDelegate.swift in Sources */,
 			);

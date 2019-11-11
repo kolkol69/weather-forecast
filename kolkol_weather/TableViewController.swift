@@ -7,36 +7,57 @@
 //
 
 import UIKit
-
 class TableViewController: UITableViewController {
-    
+    private let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
     var cityDict: [String: String] = ["Lisbon" : "38.736946,-9.142685", "Warsaw": "52.237049,21.017532", "Kyiv": "50.450001,30.523333"]
-
+    @IBAction func AddCityBtn(_ sender: Any) {
+        
+        print("Add")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
+    }
+    
+    func fetchWeather(lat: Double, lon: Double, cell: TableViewCell){
+        dataManager.weatherDataForLocation(latitude: lat, longitude: lon) { (response, error) in
+            var weatherData: WeatherData
+            
+            weatherData = WeatherData(data: response, dayNumber: 0)
+            print(weatherData.currentlyIcon)
+            
+                DispatchQueue.main.async {
+                    cell.lblTemp.text = weatherData.currentlyTemp
+                    cell.imgWeatherIcon.image = UIImage(named: weatherData.currentlyIcon)
+                }
+        }
     }
 
-    // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return cityDict.count
     }
     
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // #warning Incomplete implementation, return the number of rows
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-        //cell.lblText.text = "\(cityDict[indexPath.row])"
+        
         let cityArray = Array(cityDict)
-        cell.lblText.text = cityArray[indexPath.row].key
-        //print("seleceted", indexPath)
+        cell.lblCity.text = cityArray[indexPath.row].key
+        
+        var cityLocation = cityArray[indexPath.row].value.split{$0 == ","}.map(String.init)
+        let Lat = Double(cityLocation[0])!
+        let Lon = Double(cityLocation[1])!
+        
+        self.fetchWeather(lat: Lat, lon: Lon, cell: cell)
+        
         return cell;
     }
     

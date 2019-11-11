@@ -8,5 +8,6 @@ target 'kolkol_weather' do
   # Pods for kolkol_weather
 #  pod 'SwiftyJSON', '~> 4.0'
   pod 'SwiftyJSON', :git =>'https://github.com/SwiftyJSON/SwiftyJSON.git'
+  pod 'Alamofire', '~> 5.0.0-rc.3'
 
 end

@@ -10,6 +10,8 @@ import Foundation
 import SwiftyJSON
 
 struct WeatherData {
+    var currentlyTemp: String
+    var currentlyIcon: String
     
     var maxTemp: String
     var minTemp: String
@@ -24,9 +26,24 @@ struct WeatherData {
         let json = JSON(data)
         let dailyWeather = json["daily"]
 
+        if let currentlyWeather = json["currently"].dictionary {
+            if let currentlyTemp = currentlyWeather["temperature"]?.double {
+                self.currentlyTemp = String(format: "%.0f", (currentlyTemp - 32) * 5 / 9) + " ºC"
+            } else {
+                self.currentlyTemp = "--"
+            }
+            if let currentlyIcon = currentlyWeather["icon"]?.string {
+                self.currentlyIcon = currentlyIcon
+            } else {
+                self.currentlyIcon = "--"
+            }
+        } else {
+            self.currentlyIcon = ""
+            self.currentlyTemp = ""
+        }
+
         if let dailyWeatherData = dailyWeather["data"].array {
             self.data = dailyWeatherData[dayNumber]
-            print(self.data)
             if let summary = self.data["summary"].string {
                 self.description = summary
             } else {
