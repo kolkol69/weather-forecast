@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import CoreData
+
 class TableViewController: UITableViewController {
     private let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
+//    var cities: [NSManagedObject] = []
     var cityDict: [String: String] = ["Lisbon" : "38.736946,-9.142685", "Warsaw": "52.237049,21.017532", "Kyiv": "50.450001,30.523333"]
     @IBAction func AddCityBtn(_ sender: Any) {
-        
-        print("Add")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
+        
     }
+    
     
     func fetchWeather(lat: Double, lon: Double, cell: TableViewCell){
         dataManager.weatherDataForLocation(latitude: lat, longitude: lon) { (response, error) in
@@ -52,7 +55,7 @@ class TableViewController: UITableViewController {
         let cityArray = Array(cityDict)
         cell.lblCity.text = cityArray[indexPath.row].key
         
-        var cityLocation = cityArray[indexPath.row].value.split{$0 == ","}.map(String.init)
+        let cityLocation = cityArray[indexPath.row].value.split{$0 == ","}.map(String.init)
         let Lat = Double(cityLocation[0])!
         let Lon = Double(cityLocation[1])!
         
@@ -64,11 +67,25 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         let cityArray = Array(cityDict)
-        var cityLocation = cityArray[indexPath.row].value.split{$0 == ","}.map(String.init)
+        let cityLocation = cityArray[indexPath.row].value.split{$0 == ","}.map(String.init)
         vc.CityLbl = "\(cityArray[indexPath.row].key)"
         vc.CityLat = Double(cityLocation[0])!
         vc.CityLon = Double(cityLocation[1])!
         splitViewController?.showDetailViewController(vc, sender: nil)
     }
-
+    
+    @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
+        let source = segue.source as? ModalController // This is the source
+        if source?.searchCity != "" {
+            let cityName = source?.searchCity
+            let cityCoords = source?.searchCoords
+            self.cityDict["\(cityName!)"] = cityCoords
+            print(self.cityDict)
+            tableView.reloadData()
+            
+            let defaults = UserDefaults.standard
+            // Store
+            defaults.set("theGreatestName", forKey: "cities")
+        }
+    }
 }

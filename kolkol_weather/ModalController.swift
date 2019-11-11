@@ -10,10 +10,12 @@ import Foundation
 import Alamofire
 
 class ModalController: UIViewController {
+    var delegate = self
     var searchCity: String = ""
     var searchCoords: String = ""
     var searchField: String = "London"
     
+    @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var txtSearchField: UITextField!
     @IBAction func btnSearch(_ sender: Any) {
         print("search")
@@ -44,8 +46,8 @@ class ModalController: UIViewController {
             
             print(self.searchCity)
             print(self.searchCoords)
-            
-            self.dismiss(animated: true, completion: nil)
+            self.btnCancel.sendActions(for: .touchUpInside)
+            //self.dismiss(animated: true, completion: nil)
         }
     }
     
