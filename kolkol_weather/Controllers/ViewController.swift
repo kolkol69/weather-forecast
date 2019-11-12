@@ -26,11 +26,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var PrevDayButton: UIButton!
     @IBOutlet weak var NextDayButton: UIButton!
     @IBAction func btnShowOnMap(_ sender: Any) {
-//        let vc = MapController()
-//        vc.latt = self.CityLat
-//        vc.long = self.CityLon
-//
-//        navigationController?.pushViewController(vc, animated: true)
     }
     
     func getDayNumber() -> Int{

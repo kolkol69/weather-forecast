@@ -9,23 +9,21 @@ import UIKit
 import Foundation
 import Alamofire
 import CoreLocation
-import MapKit
+import DropDown
 
-protocol ChangeCityDelegate {
-    func userEnteredANewCityName(city: String)
-}
-
-class ModalController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
-    func userEnteredANewCityName(city: String) {
-        print("city", city)
-    }
+class ModalController: UIViewController, CLLocationManagerDelegate {
     
     var delegate = self
     var searchCity: String = ""
     var searchCoords: String = ""
     var searchField: String = "London"
-    let locationManager = CLLocationManager()
+    var searchResults: [[String: Any]] = []
     
+    let locationManager = CLLocationManager()
+    let dropDown = DropDown()
+    
+    
+    @IBOutlet weak var dropDownView: UIView!
     @IBOutlet weak var txtField: UITextField!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var txtSearchField: UITextField!
@@ -39,7 +37,9 @@ class ModalController: UIViewController, CLLocationManagerDelegate, ChangeCityDe
             if let result = response.value{
                 if let cityArray = result as? [[String : Any]] {
                     if cityArray.count > 0 {
-                        self.getCityData(cityArray: cityArray)
+                        if let firstCity = cityArray.first {
+                            self.getCityData(firstCity: firstCity)
+                        }
                     } else {
                         self.showAlert(title: "City wasn't found", message: "Make sure there are no typoes or search for another city")
                     }
@@ -52,18 +52,34 @@ class ModalController: UIViewController, CLLocationManagerDelegate, ChangeCityDe
         super.viewDidLoad()
         txtSearchField.addTarget(self, action: #selector(ModalController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         self.getLocation()
+        dropDown.anchorView = dropDownView
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+          print("Selected item: \(item) at index: \(index)")
+            self.searchField = item
+            let city = self.findCityDataByName(cityName: item)
+            self.getCityData(firstCity: city)
+        }
     }
     
-    func getCityData(cityArray: [[String: Any]]){
-        if let firstCity = cityArray.first {
-            if let coords = firstCity["latt_long"] as? String {
-                self.searchCoords = coords
-            }
-            if let city = firstCity["title"] as? String {
-                self.searchCity = city
-            }
-            self.btnCancel.sendActions(for: .touchUpInside)
+    func getCityData(firstCity: [String: Any]){
+        if let coords = firstCity["latt_long"] as? String {
+            self.searchCoords = coords
         }
+        if let city = firstCity["title"] as? String {
+            self.searchCity = city
+        }
+        self.btnCancel.sendActions(for: .touchUpInside)
+    }
+    
+    func findCityDataByName(cityName: String) -> Dictionary<String, Any> {
+        for city in self.searchResults {
+            if let name: String = city["title"] as! String {
+                if name == cityName {
+                    return city
+                }
+            }
+        }
+        return ["": ""]
     }
     
     func showAlert(title: String, message: String) {
@@ -117,8 +133,26 @@ class ModalController: UIViewController, CLLocationManagerDelegate, ChangeCityDe
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        dropDown.reloadAllComponents()
         if let searchField = textField.text {
             self.searchField = searchField
         }
+        let url = "https://www.metaweather.com/api/location/search/?query=\(self.searchField)"
+        AF.request(url, method: .get).responseJSON { response in
+            if let result = response.value{
+                if let cityArray = result as? [[String : Any]] {
+                    self.searchResults = cityArray
+                    var dropDownArray: [String] = []
+                    for city in cityArray {
+                        if let cityName = city["title"] {
+                            dropDownArray.append(cityName as! String)
+                        }
+                    }
+                    self.dropDown.dataSource = dropDownArray
+                    self.dropDown.show()
+                }
+            }
+        }
+        
     }
 }
