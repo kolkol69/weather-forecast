@@ -22,8 +22,6 @@ class ModalController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     let dropDown = DropDown()
     
-    
-    @IBOutlet weak var dropDownView: UIView!
     @IBOutlet weak var txtField: UITextField!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var txtSearchField: UITextField!
@@ -52,7 +50,13 @@ class ModalController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         txtSearchField.addTarget(self, action: #selector(ModalController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         self.getLocation()
-        dropDown.anchorView = dropDownView
+        self.setupDropdown()
+    }
+    
+    func setupDropdown(){
+        dropDown.anchorView = txtField
+        dropDown.direction = .bottom
+        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
             self.searchField = item
@@ -73,7 +77,7 @@ class ModalController: UIViewController, CLLocationManagerDelegate {
     
     func findCityDataByName(cityName: String) -> Dictionary<String, Any> {
         for city in self.searchResults {
-            if let name: String = city["title"] as! String {
+            if let name: String = city["title"] as? String {
                 if name == cityName {
                     return city
                 }

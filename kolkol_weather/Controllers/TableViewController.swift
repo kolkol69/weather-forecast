@@ -107,7 +107,7 @@ class TableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        cell.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -149,8 +149,8 @@ class TableViewController: UITableViewController {
             self.deleteRowIndexPaths = indexPath
             self.deleteCityName = cityToDelete.key
             self.confirmDelete(name: cityToDelete.key)
-            }
         }
+    }
     
     func confirmDelete(name: String) {
         let alert = UIAlertController(title: "Delete City", message: "Are you sure you want to permanently delete \(name)?", preferredStyle: .actionSheet)

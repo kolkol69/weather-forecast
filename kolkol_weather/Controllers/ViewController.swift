@@ -128,7 +128,7 @@ class ViewController: UIViewController {
     func styleHeader(){
         if let navController = self.navigationController {
             navController.navigationBar.isTranslucent = true
-            navController.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            navController.navigationBar.tintColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 1)
             navController.navigationBar.alpha = 0.8
         }
     }
