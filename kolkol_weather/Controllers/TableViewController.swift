@@ -90,7 +90,6 @@ class TableViewController: UITableViewController {
             var weatherData: WeatherData
             
             weatherData = WeatherData(data: response, dayNumber: 0)
-            //print(weatherData.currentlyIcon)
             
                 DispatchQueue.main.async {
                     cell.lblTemp.text = weatherData.currentlyTemp
@@ -141,9 +140,7 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        //print("del")
         if (editingStyle == .delete) {
-            //print("deleting")
             let cityArray = Array(cityDict)
             let cityToDelete = cityArray[indexPath.row]
             self.deleteRowIndexPaths = indexPath
@@ -199,7 +196,6 @@ class TableViewController: UITableViewController {
             let cityName = source?.searchCity
             let cityCoords = source?.searchCoords
             self.cityDict["\(cityName!)"] = cityCoords
-            //print(self.cityDict)
             self.updateCoreData()
         }
     }

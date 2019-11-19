@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var MyName: UILabel!
+    @IBOutlet weak var DateLbl: UILabel!
     @IBOutlet weak var Condition: UILabel!
     @IBOutlet weak var Wind: UILabel!
     @IBOutlet weak var WeatherType: UILabel!
@@ -71,10 +72,12 @@ class ViewController: UIViewController {
     
     @IBAction func NextDay(_ sender: UIButton) {
         self.nextDay()
+        self.updateDate()
     }
     
     @IBAction func PrevDay(_ sender: UIButton) {
         self.prevDay()
+        self.updateDate()
     }
     
     private let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
@@ -114,30 +117,38 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MyName.text = "Maksym Kolodiy"
         if self.CityLbl == "" {
             self.navigationItem.title = Defaults.City
         } else {
             self.navigationItem.title = self.CityLbl
         }
         self.styleHeader()
+        self.showDate(day: Date())
         
-//        let formatter = DateFormatter()
-//        // initially set the format based on your datepicker date / server String
-//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//
-//        let myString = formatter.string(from: Date()) // string purpose I add here
-//        // convert your string to date
-//        let yourDate = formatter.date(from: myString)
-//        //then again set the date format whhich type of output you need
-//        formatter.dateFormat = "dd-MMM-yyyy"
-//        // again convert your date to string
-//        let myStringafd = formatter.string(from: yourDate!)
-//
-//        print(myStringafd)
-//        MyName.text = myStringafd
-        MyName.text = "Maksym Kolodiy"
         self.disableButton(button: self.PrevDayButton)
         fetchData()
+    }
+    
+    func showDate(day: Date){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateString = dateFormatter.string(from: day)
+        let yourDate = dateFormatter.date(from: dateString)
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        let datefd = dateFormatter.string(from: yourDate!)
+        dateFormatter.dateFormat = "EEEE"
+        let dayInWeek = dateFormatter.string(from: day)
+        DateLbl.text = "\(dayInWeek) \(datefd)"
+    }
+    
+    func updateDate(){
+        let calendar = Calendar.current
+        let today = Date()
+        let dayNumber = getDayNumber();
+        let nextDay = calendar.date(byAdding: .day, value: dayNumber, to: today)!
+        
+        self.showDate(day: nextDay)
     }
     
     func styleHeader(){

@@ -58,7 +58,6 @@ class ModalController: UIViewController, CLLocationManagerDelegate {
         dropDown.direction = .bottom
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-          print("Selected item: \(item) at index: \(index)")
             self.searchField = item
             let city = self.findCityDataByName(cityName: item)
             self.getCityData(firstCity: city)
@@ -110,8 +109,6 @@ class ModalController: UIViewController, CLLocationManagerDelegate {
                 let placemark = placemarks! as [CLPlacemark]
                 if placemark.count>0{
                     let placemark = placemarks![0]
-                    print(placemark)
-                    print(placemark.locality!)
                     self.txtField.placeholder = "You are in \(placemark.locality!)"
                     self.searchCity = placemark.locality!
                 }
