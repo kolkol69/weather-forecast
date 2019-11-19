@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050463BE2384A31700C4656E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 050463BD2384A31700C4656E /* Assets.xcassets */; };
 		0594AB8B2376E610009D5D20 /* ModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0594AB8A2376E610009D5D20 /* ModalController.swift */; };
 		0594AB8E2379B2EA009D5D20 /* kolkol_weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0594AB8C2379B2EA009D5D20 /* kolkol_weather.xcdatamodeld */; };
-		0594ABB9237A0306009D5D20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0594ABB8237A0305009D5D20 /* Assets.xcassets */; };
 		0594ABBB237A1664009D5D20 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0594ABBA237A1664009D5D20 /* MapController.swift */; };
 		05C725762368B96200EC4652 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C725752368B96200EC4652 /* SwiftyJSON.framework */; };
 		05C7257A2369D48200EC4652 /* CityListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C725792369D48200EC4652 /* CityListController.swift */; };
@@ -27,9 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		050463BD2384A31700C4656E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0594AB8A2376E610009D5D20 /* ModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModalController.swift; path = "/Users/maksymkolodiy/Documents/agh/mobile-lab3/weather-forecast/kolkol_weather/ModalController.swift"; sourceTree = "<absolute>"; };
 		0594AB8D2379B2EA009D5D20 /* CityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CityModel.xcdatamodel; sourceTree = "<group>"; };
-		0594ABB8237A0305009D5D20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		0594ABBA237A1664009D5D20 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		05C725752368B96200EC4652 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C725792369D48200EC4652 /* CityListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListController.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		3FF30EB723574DE900A12B0C /* kolkol_weather */ = {
 			isa = PBXGroup;
 			children = (
-				0594ABB8237A0305009D5D20 /* Assets.xcassets */,
+				050463BD2384A31700C4656E /* Assets.xcassets */,
 				0594ABB72379B94E009D5D20 /* Helpers */,
 				0594ABB62379B93D009D5D20 /* CoreData */,
 				0594AB8F2379B307009D5D20 /* Controllers */,
@@ -207,7 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FF30EC323574DEB00A12B0C /* LaunchScreen.storyboard in Resources */,
-				0594ABB9237A0306009D5D20 /* Assets.xcassets in Resources */,
+				050463BE2384A31700C4656E /* Assets.xcassets in Resources */,
 				3FF30EBE23574DE900A12B0C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
